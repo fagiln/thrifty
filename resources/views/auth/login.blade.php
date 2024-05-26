@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('template.auth')
+@section('title', 'Login')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-    <title>Login</title>
-</head>
-
-<body>
     <p class="fs-1 fw-bold">LOGIN here ..</p>
-    <form action="" class="form">
-        <div class="label">Email</div>
-        <input type="text" class="input">
+    <form action="{{ route('login.authenticate') }}" method="POST" class="form">
+        @csrf
+        <div class="mb-1 label">Email</div>
+        <input type="text" class=" form-control" name="email" value="{{ old('email') }}" required>
+        @error('email')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+        <div class="mb-1 mt-3 label">Password</div>
+        <input type="password" class="mb-3 form-control" name="password" required>
 
-        <div class="label">Password</div>
-        <input type="password" class="input">
         <div>
 
-            <a href="" class="btn btn-custom">Login</a>
+            <button type="submit" class="btn btn-custom">Login</button>
         </div>
     </form>
-</body>
 
-</html>
+    @push('scripts')
+        <script>
+            function closeAlert() {
+                var alert = document.querySelector('.alert');
+                alert.style.display = 'none';
+            }
+        </script>
+    @endpush
+@endsection

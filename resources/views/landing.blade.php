@@ -24,7 +24,7 @@
                 <a class="btn btn-custom" href="{{route('login.index')}}">
                     Login
                 </a> 
-                <a class="btn">
+                <a class="btn" href="{{ route('register.index') }}">
                    Sign
                 </a>
             </div>
