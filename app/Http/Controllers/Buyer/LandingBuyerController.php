@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Buyer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardBuyerController extends Controller
+class LandingBuyerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('buyer.dashboard');
+     return view('landing');
     }
 
     /**

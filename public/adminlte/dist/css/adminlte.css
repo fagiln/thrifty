@@ -5755,7 +5755,7 @@ a.badge:focus {
 a.badge-primary:hover,
 a.badge-primary:focus {
   color: #fff;
-  background-color: #0062cc;
+  background-color: #01585a;
 }
 
 a.badge-primary:focus,
@@ -7454,7 +7454,7 @@ a.bg-primary:hover,
 a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0062cc !important;
+  background-color: #01585a !important;
 }
 
 .bg-secondary {
@@ -14263,8 +14263,8 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 [class*="sidebar-light-"] .nav-sidebar>.nav-item.menu-open>.nav-link,
 [class*="sidebar-light-"] .nav-sidebar>.nav-item:hover>.nav-link {
-  background-color: rgba(0, 0, 0, 0.1);
-  color: #212529;
+  background-color:#006769;
+  color: #fff;
 }
 
 [class*="sidebar-light-"] .nav-sidebar>.nav-item>.nav-link.active {
@@ -14307,6 +14307,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 [class*="sidebar-light-"] .nav-treeview>.nav-item>.nav-link:hover {
   background-color: rgba(0, 0, 0, 0.1);
+  color: #006769;
 }
 
 [class*="sidebar-light-"] .nav-flat .nav-item .nav-treeview .nav-treeview {
@@ -47925,7 +47926,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-primary.btn:hover {
-  border-color: #0062cc;
+  border-color: #01585a;
   color: #ececec;
 }
 
@@ -47933,7 +47934,7 @@ blockquote.quote-gray-dark h6 {
 .bg-primary.btn:not(:disabled):not(.disabled).active,
 .bg-primary.btn:active,
 .bg-primary.btn.active {
-  background-color: #0062cc !important;
+  background-color: #01585a !important;
   border-color: #005cbf;
   color: #fff;
 }
@@ -48247,7 +48248,7 @@ blockquote.quote-gray-dark h6 {
 }
 
 .bg-blue.btn:hover {
-  border-color: #0062cc;
+  border-color: #01585a;
   color: #ececec;
 }
 
@@ -48255,7 +48256,7 @@ blockquote.quote-gray-dark h6 {
 .bg-blue.btn:not(:disabled):not(.disabled).active,
 .bg-blue.btn:active,
 .bg-blue.btn.active {
-  background-color: #0062cc !important;
+  background-color: #01585a !important;
   border-color: #005cbf;
   color: #fff;
 }
@@ -48552,7 +48553,7 @@ blockquote.quote-gray-dark h6 {
 
   .table td.bg-primary.btn:hover,
   .table th.bg-primary.btn:hover {
-    border-color: #0062cc;
+    border-color: #01585a;
     color: #ececec;
   }
 
@@ -48564,7 +48565,7 @@ blockquote.quote-gray-dark h6 {
   .table th.bg-primary.btn:not(:disabled):not(.disabled).active,
   .table th.bg-primary.btn:active,
   .table th.bg-primary.btn.active {
-    background-color: #0062cc !important;
+    background-color: #01585a !important;
     border-color: #005cbf;
     color: #fff;
   }
@@ -48986,7 +48987,7 @@ blockquote.quote-gray-dark h6 {
 
   .table td.bg-blue.btn:hover,
   .table th.bg-blue.btn:hover {
-    border-color: #0062cc;
+    border-color: #01585a;
     color: #ececec;
   }
 
@@ -48998,7 +48999,7 @@ blockquote.quote-gray-dark h6 {
   .table th.bg-blue.btn:not(:disabled):not(.disabled).active,
   .table th.bg-blue.btn:active,
   .table th.bg-blue.btn.active {
-    background-color: #0062cc !important;
+    background-color: #01585a !important;
     border-color: #005cbf;
     color: #fff;
   }
@@ -49409,7 +49410,7 @@ blockquote.quote-gray-dark h6 {
 
 .bg-gradient-primary.btn:hover {
   background: #006769 linear-gradient(180deg, #267fde, #0069d9) repeat-x !important;
-  border-color: #0062cc;
+  border-color: #01585a;
   color: #ececec;
 }
 
@@ -49417,7 +49418,7 @@ blockquote.quote-gray-dark h6 {
 .bg-gradient-primary.btn:not(:disabled):not(.disabled).active,
 .bg-gradient-primary.btn:active,
 .bg-gradient-primary.btn.active {
-  background: #006769 linear-gradient(180deg, #267ad4, #0062cc) repeat-x !important;
+  background: #006769 linear-gradient(180deg, #267ad4, #01585a) repeat-x !important;
   border-color: #005cbf;
   color: #fff;
 }
@@ -49871,7 +49872,7 @@ blockquote.quote-gray-dark h6 {
 
 .bg-gradient-blue.btn:hover {
   background: #006769 linear-gradient(180deg, #267fde, #0069d9) repeat-x !important;
-  border-color: #0062cc;
+  border-color: #01585a;
   color: #ececec;
 }
 
@@ -49879,7 +49880,7 @@ blockquote.quote-gray-dark h6 {
 .bg-gradient-blue.btn:not(:disabled):not(.disabled).active,
 .bg-gradient-blue.btn:active,
 .bg-gradient-blue.btn.active {
-  background: #006769 linear-gradient(180deg, #267ad4, #0062cc) repeat-x !important;
+  background: #006769 linear-gradient(180deg, #267ad4, #01585a) repeat-x !important;
   border-color: #005cbf;
   color: #fff;
 }

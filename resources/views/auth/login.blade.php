@@ -6,12 +6,12 @@
     <form action="{{ route('login.authenticate') }}" method="POST" class="form">
         @csrf
         <div class="mb-1 label">Email</div>
-        <input type="text" class=" form-control" name="email" value="{{ old('email') }}" required>
+        <input type="text" class=" form-control" name="email" value="{{ old('email') }}" required placeholder="Masukkan Email">
         @error('email')
             <div class="text-danger">{{ $message }}</div>
         @enderror
         <div class="mb-1 mt-3 label">Password</div>
-        <input type="password" class="mb-3 form-control" name="password" required>
+        <input type="password" class="mb-3 form-control" name="password" required placeholder="Masukkan Password">
 
         <div>
 

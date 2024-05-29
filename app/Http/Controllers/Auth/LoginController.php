@@ -33,7 +33,7 @@ class LoginController extends Controller
                 return redirect()->intended('seller/dashboard');
             } elseif (Auth::user()->role == 'buyer') {
                 $request->session()->regenerate();
-                return redirect()->intended('dashboard');
+                return redirect()->intended('/');
             }
         }
 
@@ -45,6 +45,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
