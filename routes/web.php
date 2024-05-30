@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Buyer\DashboardBuyerController;
 use App\Http\Controllers\Seller\AddSellerController;
 use App\Http\Controllers\Seller\DashboardSellerController;
+use App\Http\Controllers\Seller\UserListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,7 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
     Route::group(['prefix' => 'seller', 'as' => 'seller.'], function () {
         Route::resource('/dashboard', DashboardSellerController::class)->names('dashboard');
         Route::get('/add-seller',[ AddSellerController::class, 'index'])->name('add.seller');
+        Route::get('/user-list', [UserListController::class, 'index'])->name('user.list');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 });

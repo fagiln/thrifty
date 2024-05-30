@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title>Admin | @yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('datatables/datatables.bundle.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -48,7 +49,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ url('/seller/dashboard') }}" class="nav-link">@yield('title')</a>
+                    <span class="nav-link">@yield('title')</span>
                 </li>
 
             </ul>
@@ -142,11 +143,11 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{url('seller/add-seller')}}" class="nav-link ">
+                                    <a href="{{ url('seller/add-seller') }}" class="nav-link ">
                                         <i class="nav-icon fas fa-user-plus"></i>
-                                        <p>Add User</p>
+                                        <p>Add Seller</p>
                                     </a>
-                                    <a href="" class="nav-link ">
+                                    <a href="{{ url('seller/user-list') }}" class="nav-link ">
                                         <i class="nav-icon fas fa-user-plus"></i>
                                         <p>User List</p>
                                     </a>
@@ -175,7 +176,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">@yield('title')</h1>
+                            <h1 class="m-0 font-weight-bold">@yield('title')</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
 
@@ -186,22 +187,20 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            @yield('content')
+            <div class="container-fluid">
+
+                @yield('content')
+            </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong class="text d-none d-sm-inline-block">Thrifty</strong>
+            <span class="text d-none d-sm-inline-block"><strong>Thrifty </strong>was made by love </span>
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0.0
+                <b>Beta Version</b> 1.0.0
             </div>
         </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -236,6 +235,11 @@
     <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
 
     <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+    <script src="{{ asset('datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ asset('datatables/bootstrap.datatables.js') }}"></script>
+    @stack('scripts')
 </body>
 
 </html>
