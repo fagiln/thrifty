@@ -22,8 +22,13 @@ class UserDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'user.action')
-            
+            ->addColumn('action', function ($user) {
+                if ($user->role == 'seller') {
+                    return view('seller.user.action', ['user' => $user]);
+                }
+                return '<span class="font-italic">Not allowed to edit</span>';
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -41,19 +46,18 @@ class UserDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('user-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->responsive(true)
-                    ->parameters([
-                        'responsive' => true,
-                        'autoWidth' => false,  // Untuk memastikan lebar kolom diatur secara otomatis
-                    ])
-                    //->dom('Bfrtip')
-                    ->orderBy([1, 'asc'])
-                    ->selectStyleSingle()
-                    ->buttons([
-                    ]);
+            ->setTableId('user-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->responsive(true)
+            ->parameters([
+                'responsive' => true,
+                'autoWidth' => false,  // Untuk memastikan lebar kolom diatur secara otomatis
+            ])
+            //->dom('Bfrtip')
+            ->orderBy([1, 'asc'])
+            ->selectStyleSingle()
+            ->buttons([]);
     }
 
     /**
@@ -63,10 +67,10 @@ class UserDataTable extends DataTable
     {
         return [
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::make('id'),
             Column::make('username'),
             Column::make('email'),

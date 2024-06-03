@@ -38,9 +38,12 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
     Route::group(['prefix' => 'seller', 'as' => 'seller.'], function () {
         Route::resource('/dashboard', DashboardSellerController::class)->names('dashboard');
-        Route::get('/add-seller',[ AddSellerController::class, 'index'])->name('add.seller');
-        Route::get('/user-list', [UserListController::class, 'index'])->name('user.list');
+        Route::resource('/add-seller', AddSellerController::class)->names('add.seller');
+        // Route::post('/add-seller',[ AddSellerController::class, 'store'])->name('add.seller.index');
+        Route::resource('/user-list', UserListController::class)->names('user.list');
+        Route::put('/user-list/{id}', [UserListController::class, 'update'])->name('user.list.update');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
     });
 });
 Route::middleware(['auth', 'verified', 'user.role:buyer'])->group(function () {

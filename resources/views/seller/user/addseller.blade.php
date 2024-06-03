@@ -1,7 +1,17 @@
 @extends('template.layout')
 @section('title', 'Add Seller')
 @section('content')
-    <form action="" method="POST" class="form">
+
+    @if (session('status'))
+        <div class="mt-3">
+            <div id="success-alert" class="alert alert-success d-flex justify-content-between fade show" role="alert">
+                {{ session('add') }}
+
+            </div>
+        </div>
+    @endif
+
+    <form action="{{ route('seller.add.seller.store') }}" method="POST" class="form">
         @csrf
         <div class="row ">
             <div class="col-md-6">
@@ -40,7 +50,7 @@
                 @error('last_name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-        
+
             </div>
         </div>
         <div class="row ">
@@ -53,20 +63,30 @@
             </div>
             <div class="col-md-6">
                 <div class="mb-1 mt-3 label">Confirm Password</div>
-                <input type="password" class=" form-control" name="password_confirmation" required placeholder="Ulangi Password">
+                <input type="password" class=" form-control" name="password_confirmation" required
+                    placeholder="Ulangi Password">
                 @error('password_confirmation')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-        
+
             </div>
         </div>
-       
-
-     
-
-   
         <div>
-            <button type="submit" class="mt-3 btn btn-primary">Add</button>
+            <button type="submit" class="mt-3 btn btn-primary">Add Seller</button>
         </div>
     </form>
+
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var alert = document.getElementById('success-alert');
+                if (alert) {
+                    setTimeout(function() {
+                        var bootstrapAlert = new bootstrap.Alert(alert);
+                        bootstrapAlert.close();
+                    }, 5000); // waktu dalam milidetik (5000 ms = 5 detik)
+                }
+            });
+        </script>
+    @endpush
 @endsection

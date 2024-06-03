@@ -148,7 +148,7 @@
                                         <p>Add Seller</p>
                                     </a>
                                     <a href="{{ url('seller/user-list') }}" class="nav-link ">
-                                        <i class="nav-icon fas fa-user-plus"></i>
+                                        <i class="nav-icon fas fa-users"></i>
                                         <p>User List</p>
                                     </a>
                                 </li>
@@ -156,7 +156,7 @@
 
                         </li>
                         <li class="nav-item rounded">
-                            <a href="/seller/logout" class="nav-link  bg-danger">
+                            <a href="/seller/logout" class="nav-link  bg-danger" onclick="return confirm('Anda yakin ingin Logout')">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>Logout</p>
                             </a>
@@ -188,14 +188,14 @@
 
             <!-- Main content -->
             <div class="container-fluid">
-
+              
                 @yield('content')
             </div>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <span class="text d-none d-sm-inline-block"><strong>Thrifty </strong>was made by love </span>
+            <span class="text d-none d-sm-inline-block"><strong>Thrifty </strong>was made by &#10084; </span>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Beta Version</b> 1.0.0
             </div>
@@ -203,7 +203,6 @@
 
     </div>
     <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -235,11 +234,12 @@
     <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
 
     <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
     <script src="{{ asset('datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('datatables/bootstrap.datatables.js') }}"></script>
     @stack('scripts')
+
 </body>
 
 </html>

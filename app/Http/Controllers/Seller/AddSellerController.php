@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Seller\SellerStoreReq;
+use App\Models\Seller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AddSellerController extends Controller
 {
@@ -12,7 +16,7 @@ class AddSellerController extends Controller
      */
     public function index()
     {
-        return view('seller.addseller');
+        return view('seller.user.addseller');
     }
 
     /**
@@ -26,10 +30,15 @@ class AddSellerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SellerStoreReq $request)
     {
-        //
-    }
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']); // Enkripsi password
+
+        Seller::create($data);
+        return redirect('seller/add-seller')
+            ->with(['add' => 'Seller berhasil dibuat']);
+        }
 
     /**
      * Display the specified resource.

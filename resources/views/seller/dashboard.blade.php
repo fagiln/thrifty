@@ -26,7 +26,6 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>53<sup style="font-size: 20px">%</sup></h3>
-
                             <p>Bounce Rate</p>
                         </div>
                         <div class="icon">
@@ -40,9 +39,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{$totalUser}}</h3>
 
-                            <p>User Registrations</p>
+                            <p>User Registered</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
