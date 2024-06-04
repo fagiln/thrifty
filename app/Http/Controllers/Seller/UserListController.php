@@ -31,6 +31,6 @@ class UserListController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return with(['add', "User berhasil di Hapus"]);
+        return with(['status'=> "User berhasil di Hapus"]);
     }
 }

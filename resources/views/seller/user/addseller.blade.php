@@ -2,7 +2,7 @@
 @section('title', 'Add Seller')
 @section('content')
 
-    @if (session('status'))
+    @if (session('add'))
         <div class="mt-3">
             <div id="success-alert" class="alert alert-success d-flex justify-content-between fade show" role="alert">
                 {{ session('add') }}

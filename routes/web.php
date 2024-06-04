@@ -6,6 +6,7 @@ use App\Http\Controllers\Buyer\DashboardBuyerController;
 use App\Http\Controllers\Seller\AddSellerController;
 use App\Http\Controllers\Seller\DashboardSellerController;
 use App\Http\Controllers\Seller\UserListController;
+use App\Http\Controllers\Seller\CategoryListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,11 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
         // Route::post('/add-seller',[ AddSellerController::class, 'store'])->name('add.seller.index');
         Route::resource('/user-list', UserListController::class)->names('user.list');
         Route::put('/user-list/{id}', [UserListController::class, 'update'])->name('user.list.update');
+        Route::resource('/category-list', CategoryListController::class)->names('category.list');
+        Route::get('/category-add', [CategoryListController::class, 'showAdd'])->name('category.showadd');
+        Route::post('/category-add', [CategoryListController::class, 'store'])->name('category.store');
+        // Route::get('/category-list/{id}/edit', [CategoryListController::class, 'edit'])->name('category.edit');
+        // Route::delete('/category-list/{id}', [CategoryListController::class, 'destroy'])->name('category.delete');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     });

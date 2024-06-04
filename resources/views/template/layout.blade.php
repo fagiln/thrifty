@@ -121,13 +121,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="" class="nav-link ">
+                                    <a href="{{ url('seller/product-list') }}" class="nav-link ">
                                         <i class="fas fa-cart-plus nav-icon"></i>
-                                        <p>Add Product</p>
+                                        <p>Product List</p>
                                     </a>
-                                    <a href="" class="nav-link ">
+                                    <a href="{{ url('seller/category-list') }}" class="nav-link ">
                                         <i class="fas fa-tags nav-icon"></i>
-                                        <p>Add Kategori</p>
+                                        <p>Category List</p>
                                     </a>
                                 </li>
                             </ul>
@@ -156,7 +156,8 @@
 
                         </li>
                         <li class="nav-item rounded">
-                            <a href="/seller/logout" class="nav-link  bg-danger" onclick="return confirm('Anda yakin ingin Logout')">
+                            <a href="/seller/logout" class="nav-link  bg-danger"
+                                onclick="return confirm('Anda yakin ingin Logout')">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>Logout</p>
                             </a>
@@ -188,7 +189,7 @@
 
             <!-- Main content -->
             <div class="container-fluid">
-              
+
                 @yield('content')
             </div>
             <!-- /.content -->

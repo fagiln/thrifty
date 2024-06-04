@@ -1,21 +1,19 @@
 @extends('template.layout')
-@section('title', 'User List')
-
+@section('title', 'Category List')
 @section('content')
-    <div class="p-3">
+    @if (session('status'))
+        <div class="mt-3">
+            <div id="success-alert" class="alert alert-success d-flex justify-content-between fade show" role="alert">
+                {{ session('status') }}
 
-        @if (session('status'))
-            <div class="mt-3">
-                <div id="success-alert" class="alert alert-success d-flex justify-content-between fade show" role="alert">
-                    {{ session('status') }}
-
-                </div>
             </div>
-        @endif
+        </div>
+    @endif
 
-        {{ $dataTable->table() }}
-    </div>
-    {{-- @include('seller.user.modals') --}}
+    <a href="{{ route('seller.category.showadd') }}" class="btn btn-primary my-2">
+        <i class="fas fa-plus fs-2"></i> Add
+    </a>
+    {{ $dataTable->table() }}
     @push('scripts')
         {{ $dataTable->scripts() }}
         <script>
@@ -25,10 +23,9 @@
                     setTimeout(function() {
                         var bootstrapAlert = new bootstrap.Alert(alert);
                         bootstrapAlert.close();
-                    }, 3000); // waktu dalam milidetik (5000 ms = 5 detik)
+                    }, 5000); // waktu dalam milidetik (5000 ms = 5 detik)
                 }
             });
-
 
 
             $(document).on('click', 'button[data-action="delete"]', function() {
@@ -36,7 +33,7 @@
                 var tableId = $(this).data('table-id');
                 var name = $(this).data('name');
 
-                if (confirm('Apa kamu yakin ingin menghapus Seller ' + name + '?')) {
+                if (confirm('Apa kamu yakin ingin menghapus Category ' + name + '?')) {
                     $.ajax({
                         url: url,
                         type: 'DELETE',
@@ -45,7 +42,7 @@
                         },
                         success: function(result) {
                             $('#' + tableId).DataTable().ajax.reload();
-                            // alert('Seller ' + name + ' berhasil di hapus');
+                            // alert('Category ' + name + ' berhasil di hapus');
                         },
                         error: function(xhr) {
                             alert('Error deleting user');
