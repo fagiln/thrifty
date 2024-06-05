@@ -121,7 +121,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('seller/product-list') }}" class="nav-link ">
+                                    <a href="{{ route('seller.product.list.index') }}" class="nav-link ">
                                         <i class="fas fa-cart-plus nav-icon"></i>
                                         <p>Product List</p>
                                     </a>

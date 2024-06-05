@@ -6,6 +6,7 @@ use App\Http\Controllers\Buyer\DashboardBuyerController;
 use App\Http\Controllers\Seller\AddSellerController;
 use App\Http\Controllers\Seller\DashboardSellerController;
 use App\Http\Controllers\Seller\UserListController;
+use App\Http\Controllers\Seller\ProductListController;
 use App\Http\Controllers\Seller\CategoryListController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,8 +49,9 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
         Route::post('/category-add', [CategoryListController::class, 'store'])->name('category.store');
         // Route::get('/category-list/{id}/edit', [CategoryListController::class, 'edit'])->name('category.edit');
         // Route::delete('/category-list/{id}', [CategoryListController::class, 'destroy'])->name('category.delete');
+        Route::resource('/product-list', ProductListController::class)->names('product.list');
+        Route::get('/product-add', [ProductListController::class, 'showadd'])->name('product.show');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
     });
 });
 Route::middleware(['auth', 'verified', 'user.role:buyer'])->group(function () {

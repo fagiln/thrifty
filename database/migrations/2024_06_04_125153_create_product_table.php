@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('price');
             $table->foreignId('category_id')->constrained('category')->onUpdate('cascade')->onDelete('restrict');
-            $table->integer('quantity');
+            $table->string('stock');
+            $table->text('img_path');
             $table->text('description');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
