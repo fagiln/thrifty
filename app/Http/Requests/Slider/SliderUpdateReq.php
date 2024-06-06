@@ -11,7 +11,7 @@ class SliderUpdateReq extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -22,7 +22,9 @@ class SliderUpdateReq extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string',
+            'file' => 'mimes:jpg,jpeg,png',
+            'description' => 'required|string'
         ];
     }
 }

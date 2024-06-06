@@ -22,7 +22,13 @@ class SliderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'slider.action')
+            ->addColumn('action', function(Slider $slider){
+                return view('seller.slider.action', ['slider'=>$slider]);
+            })
+            ->editColumn('image_path', function(Slider $slider ){
+                return '<img src="'.asset('uploads/'.$slider->image_path).'" width="150px">';
+            })
+            ->rawColumns(['action', 'image_path'])
             ->setRowId('id');
     }
 

@@ -53,7 +53,7 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
         Route::resource('/product-list', ProductListController::class)->names('product.list');
         Route::get('/product-add', [ProductListController::class, 'showadd'])->name('product.show');
         Route::resource('/slider-list', SliderListController::class)->names('slider.list');
-        // Route::get('/slider-add', [SliderListController::class, 'showadd'])->names('slider.add');
+        Route::get('/slider-add', [SliderListController::class, 'showadd'])->name('slider.add');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 });

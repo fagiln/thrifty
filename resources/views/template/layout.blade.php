@@ -157,7 +157,7 @@
                         </li>
                         <li class="nav-item  rounded">
                             <a href="{{route('seller.slider.list.index')}}" class="nav-link">
-                                <i class="fas fa-home nav-icon"></i>
+                                <i class="fas fa-sliders-h nav-icon"></i>
                                 <p>Slider</p>
                             </a>
                         </li>

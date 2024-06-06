@@ -43,8 +43,11 @@
 
                 <div class="mb-1 mt-3 label">Image</div>
 
-                <input type="file" class=" form-control" name="file" required value="{{ old('price') }}"
-                    placeholder="Masukkan Harga">
+                <input type="file" id="fileInput" class=" form-control" name="file" required >
+                <div class="d-flex mt-2">
+                    <div class="label mr-3">Preview :</div>
+                    <img id="previewImage" src="#" alt="Preview Gambar" style="display: none; margin-top: 10px; max-width: 200px;">
+                </div>
                 @error('file')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -85,6 +88,18 @@
                     }, 5000); // waktu dalam milidetik (5000 ms = 5 detik)
                 }
             });
+            document.getElementById('fileInput').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var previewImage = document.getElementById('previewImage');
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
         </script>
     @endpush
 @endsection

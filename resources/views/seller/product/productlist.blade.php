@@ -32,7 +32,7 @@
                 var tableId = $(this).data('table-id');
                 var name = $(this).data('name');
 
-                if (confirm('Apa kamu yakin ingin menghapus Category ' + name + '?')) {
+                if (confirm('Apa kamu yakin ingin menghapus Product ' + name + '?')) {
                     $.ajax({
                         url: url,
                         type: 'DELETE',
