@@ -8,6 +8,7 @@ use App\Http\Controllers\Seller\DashboardSellerController;
 use App\Http\Controllers\Seller\UserListController;
 use App\Http\Controllers\Seller\ProductListController;
 use App\Http\Controllers\Seller\CategoryListController;
+use App\Http\Controllers\Seller\SliderListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,8 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
         // Route::delete('/category-list/{id}', [CategoryListController::class, 'destroy'])->name('category.delete');
         Route::resource('/product-list', ProductListController::class)->names('product.list');
         Route::get('/product-add', [ProductListController::class, 'showadd'])->name('product.show');
+        Route::resource('/slider-list', SliderListController::class)->names('slider.list');
+        // Route::get('/slider-add', [SliderListController::class, 'showadd'])->names('slider.add');
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 });

@@ -155,6 +155,12 @@
                             </ul>
 
                         </li>
+                        <li class="nav-item  rounded">
+                            <a href="{{route('seller.slider.list.index')}}" class="nav-link">
+                                <i class="fas fa-home nav-icon"></i>
+                                <p>Slider</p>
+                            </a>
+                        </li>
                         <li class="nav-item rounded">
                             <a href="/seller/logout" class="nav-link  bg-danger"
                                 onclick="return confirm('Anda yakin ingin Logout')">
@@ -188,7 +194,7 @@
             <!-- /.content-header -->
 
             <!-- Main content -->
-            <div class="container-fluid">
+            <div class="p-3">
 
                 @yield('content')
             </div>

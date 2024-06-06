@@ -2,7 +2,7 @@
 @section('title', 'User List')
 
 @section('content')
-    <div class="p-3">
+    <div class="">
 
         @if (session('status'))
             <div class="mt-3">
