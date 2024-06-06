@@ -2,6 +2,7 @@
 
 namespace App\DataTables\product;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -22,11 +23,16 @@ class ProductDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'product.action')
-            ->editColumn('img_path', function(Product $product){
-                if($product->img_path != null){
-                    return '<img src="'.asset('uploads/'.$product->img_path).'"width="100px">';
+            ->addColumn('action', function (Product $product) {
+                return view('seller.product.action', ['product' => $product]);
+            })
+            ->editColumn('img_path', function (Product $product) {
+                if ($product->img_path != null) {
+                    return '<img src="' . asset('uploads/' . $product->img_path) . '"width="90px">';
                 }
+            })->editColumn('category_id', function (Product $product) {
+
+                return $product->category->name;
             })
             ->rawColumns(['action', 'img_path'])
             ->setRowId('id');
@@ -46,18 +52,18 @@ class ProductDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-        ->setTableId('product-table')
-        ->columns($this->getColumns())
-        ->minifiedAjax()
-        ->responsive(true)
-        ->parameters([
-            'responsive' => true,
-            'autoWidth' => false,  // Untuk memastikan lebar kolom diatur secara otomatis
-        ])
-        //->dom('Bfrtip')
-        ->orderBy([1])
-        ->selectStyleSingle()
-        ->buttons([]);
+            ->setTableId('product-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->responsive(true)
+            ->parameters([
+                'responsive' => true,
+                'autoWidth' => false,  // Untuk memastikan lebar kolom diatur secara otomatis
+            ])
+            //->dom('Bfrtip')
+            ->orderBy([1])
+            ->selectStyleSingle()
+            ->buttons([]);
     }
 
     /**
@@ -67,10 +73,10 @@ class ProductDataTable extends DataTable
     {
         return [
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::make('name'),
             Column::make('price'),
             Column::make('category_id')->title('Category'),

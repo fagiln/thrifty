@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Seller;
 use App\DataTables\product\ProductDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductStoreReq;
+use App\Http\Requests\Product\ProductUpdateReq;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -29,27 +31,20 @@ class ProductListController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductStoreReq $request)
     {
         //    dd($request->all());
         $file = $request->file('file');
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:category,id', // asumsikan tabel categories dan kolom id ada
-            'stock' => 'required|integer|min:0',
-            'description' => 'nullable|string',
-            'file' => 'required', // atau 'required|file' jika mengharuskan gambar
-        ]);
-        $file_name = 'image-'.time().'.'.$file->getClientOriginalExtension();
+        $data = $request->validated();
+        $file_name = 'image-' . time() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('uploads'), $file_name);
         Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'category_id' => $request->category_id,
-            'stock' => $request->stock,
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'category_id' => $data['category_id'],
+            'stock' => $data['stock'],
             'img_path' => $file_name,
-            'description' => $request->description,
+            'description' => $data['description'],
         ]);
         return  redirect('seller/product-list')->with('status', 'Berhasil Upload');
     }
@@ -59,7 +54,8 @@ class ProductListController extends Controller
      */
     public function showadd()
     {
-        return view('seller.product.addproduct');
+        $category = Category::all();
+        return view('seller.product.addproduct', compact('category'));
     }
 
     /**
@@ -67,15 +63,36 @@ class ProductListController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::all();
+        $product = Product::findOrFail($id);
+        return view('seller.product.editproduct', compact('product','category'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductUpdateReq $request, string $id)
     {
-        //
+        $product =  Product::find($id);
+        $data = $request->all();
+        if ($request->hasFile('file')) {
+            // Delete old image if it exists
+            if ($product->img_path && file_exists(public_path('uploads/' . $product->img_path))) {
+                unlink(public_path('uploads/' . $product->img_path));
+            }
+    
+            // Upload new image
+            $file = $request->file('file');
+            $file_name = 'image-' . time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads'), $file_name);
+    
+            // Update the image path in the data array
+            $data['img_path'] = $file_name;
+        }
+        $product->update($data);
+
+        return redirect('seller/product-list')->with(['status'=> 'Berhasil update product']);
     }
 
     /**
@@ -83,6 +100,9 @@ class ProductListController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        unlink(public_path('uploads/' . $product->img_path));
+        return with(['status' => 'Berhasil di Hapus']);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductStoreReq extends FormRequest
+class ProductUpdateReq extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +26,8 @@ class ProductStoreReq extends FormRequest
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:category,id', // asumsikan tabel categories dan kolom id ada
             'stock' => 'required|integer|min:0',
-            'file' => 'required|image|mimes:jpeg,jpg,png|max:2048', // atau 'required|image' jika mengharuskan gambar
-            'description' => 'nullable|string',
+            'file' => 'nullable|image|mimes:jpeg,jpg,png|max:2048', // atau 'required|image' jika mengharuskan gambar
+            'description' => 'required|string',
         ];
     }
 }

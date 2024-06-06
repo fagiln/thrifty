@@ -18,4 +18,8 @@ class Product extends Model
         'img_path',
         'description',
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
