@@ -22,12 +22,13 @@ class SellerUpdateReq extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|string|max:20|unique:users,username',
+            'username' => 'required|string|max:20',
             'email' => 'required|string|email|max:50',
             'first_name' => 'required|string|max:10',
+            'file' => 'nullable|mimes:png,jpg,jpeg',
             'last_name' => 'nullable|string|max:10',
             'password' => 'required|string|min:8|confirmed',
- 
+
         ];
     }
 }

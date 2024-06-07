@@ -82,6 +82,7 @@
                 <li class="nav-item">
                     <span class="nav-link">
                         Welcome, Seller {{ Auth::user()->username }} !
+                        <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt="Avatar" class="ml-2 rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
                     </span>
                 </li>
 
@@ -143,7 +144,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('seller/add-seller') }}" class="nav-link ">
+                                    <a href="{{route('seller.add.seller.index') }}" class="nav-link ">
                                         <i class="nav-icon fas fa-user-plus"></i>
                                         <p>Add Seller</p>
                                     </a>

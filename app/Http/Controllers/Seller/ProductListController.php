@@ -75,7 +75,7 @@ class ProductListController extends Controller
     public function update(ProductUpdateReq $request, string $id)
     {
         $product =  Product::find($id);
-        $data = $request->all();
+        $data = $request->validated();
         if ($request->hasFile('file')) {
             // Delete old image if it exists
             if ($product->img_path && file_exists(public_path('uploads/' . $product->img_path))) {

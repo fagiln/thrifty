@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email', 50)->unique();
             $table->string('password', 255);
             $table->string('first_name', 10);
+            $table->text('avatar')->nullable();
             $table->string('last_name', 10)->nullable();
             $table->enum('role', ['seller', 'buyer'])->default('buyer');
             $table->timestamp('created_at')->useCurrent();

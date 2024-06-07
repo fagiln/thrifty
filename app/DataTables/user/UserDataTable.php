@@ -28,7 +28,10 @@ class UserDataTable extends DataTable
                 }
                 return '<span class="font-italic">Not allowed to edit</span>';
             })
-            ->rawColumns(['action'])
+            ->editColumn('avatar', function(User $user){
+                return '<img src="'.asset('uploads/'.$user->avatar).'" width="100px">';
+            })
+            ->rawColumns(['action','avatar'])
             ->setRowId('id');
     }
 
@@ -77,6 +80,7 @@ class UserDataTable extends DataTable
             Column::make('first_name')->title('First Name'),
             Column::make('last_name')->title('Last Name'),
             Column::make('role'),
+            Column::make('avatar'),
             Column::make('created_at')->title('Dibuat Pada'),
             Column::make('updated_at')->title('Diupdate Pada'),
         ];

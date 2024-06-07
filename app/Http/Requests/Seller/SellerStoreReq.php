@@ -25,6 +25,7 @@ class SellerStoreReq extends FormRequest
             'username' => 'required|string|max:20|unique:users,username',
             'email' => 'required|string|email|max:50|unique:users,email',
             'first_name' => 'required|string|max:10',
+            'file' => 'nullable',
             'last_name' => 'nullable|string|max:10',
             'password' => 'required|string|min:8|confirmed',
  
