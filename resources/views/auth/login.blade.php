@@ -13,10 +13,8 @@
         <div class="mb-1 mt-3 label">Password</div>
         <input type="password" class="mb-3 form-control" name="password" required placeholder="Masukkan Password">
 
-        <div>
 
-            <button type="submit" class="btn btn-custom">Login</button>
-        </div>
+            <button type="submit" class="btn btn-custom w-100 py-2 mt-3">Login</button>
     </form>
 
     @push('scripts')

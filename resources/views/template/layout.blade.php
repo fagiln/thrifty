@@ -80,10 +80,10 @@
                 </li>
 
                 <li class="nav-item">
-                    <span class="nav-link">
+                    <a class="nav-link" href="{{ url('seller/user-list/'.Auth::user()->id.'/edit') }}">
                         Welcome, Seller {{ Auth::user()->username }} !
                         <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt="Avatar" class="ml-2 rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
-                    </span>
+                    </a>
                 </li>
 
             </ul>
@@ -112,7 +112,7 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item menu-open">
+                        <li class="nav-item menu-close">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-tshirt"></i>
                                 <p>
@@ -164,7 +164,7 @@
                         </li>
                         <li class="nav-item rounded">
                             <a href="/seller/logout" class="nav-link  bg-danger"
-                                onclick="return confirm('Anda yakin ingin Logout')">
+                                onclick="return confirm('Anda yakin ingin Logout?')">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>Logout</p>
                             </a>

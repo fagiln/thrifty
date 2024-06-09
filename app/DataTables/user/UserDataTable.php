@@ -4,7 +4,6 @@ namespace App\DataTables\user;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -24,7 +23,7 @@ class UserDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($user) {
-                if ($user->id == Auth::user()->id) {
+                if ($user->role == 'seller') {
                     return view('seller.user.action', ['user' => $user]);
                 }
                 return '<span class="font-italic">Not allowed to edit</span>';
@@ -75,6 +74,7 @@ class UserDataTable extends DataTable
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
+
             Column::make('username'),
             Column::make('email'),
             Column::make('first_name')->title('First Name'),

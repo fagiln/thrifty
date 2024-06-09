@@ -40,9 +40,8 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
 
-        <div>
-            <button type="submit" class="mt-3 btn btn-custom">Register</button>
-        </div>
+        <button type="submit" class="btn btn-custom w-100 py-2 mt-3">Register</button>
+
     </form>
     @push('scripts')
      

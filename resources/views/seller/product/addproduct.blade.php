@@ -43,10 +43,24 @@
 
                 <div class="mb-1 mt-3 label">Image</div>
 
-                <input type="file" id="fileInput" class=" form-control" name="file" required >
+                <input type="file" id="fileInput" class=" form-control" name="file" required>
                 <div class="d-flex mt-2">
                     <div class="label mr-3">Preview :</div>
-                    <img id="previewImage" src="#" alt="Preview Gambar" style="display: none; margin-top: 10px; max-width: 200px;">
+                    <div class="card " style="width:18rem; ">
+                        <img src="#" id="previewImage"
+                            class="card-img-top " style="height:200px; width:100%; object-fit:cover;" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Nama Produk</h5>
+                            <p class="card-text">Deskripsi</p>
+                            <p class="card-text">Rp. 9999999</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-primary">Buy</a>
+                                <a href="">See details</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <img id="previewImage" src="#" alt="Preview Gambar"
+                        style="display: none; margin-top: 10px; max-width: 200px;"> --}}
                 </div>
                 @error('file')
                     <div class="text-danger">{{ $message }}</div>
@@ -89,17 +103,17 @@
                 }
             });
             document.getElementById('fileInput').addEventListener('change', function(event) {
-            var file = event.target.files[0];
-            if (file) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var previewImage = document.getElementById('previewImage');
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+                var file = event.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var previewImage = document.getElementById('previewImage');
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
         </script>
     @endpush
 @endsection

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Buyer\DashboardBuyerController;
+use App\Http\Controllers\Buyer\HomeController;
 use App\Http\Controllers\Seller\AddSellerController;
 use App\Http\Controllers\Seller\DashboardSellerController;
 use App\Http\Controllers\Seller\UserListController;
@@ -28,7 +29,7 @@ Route::get('/', function () {
     if (auth()->check() && auth()->user()->role == 'seller') {
         return redirect('seller/dashboard');
     }
-    return view('landing');
+    return redirect(route('home.index'));
 });
 
 
@@ -57,6 +58,7 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 });
+Route::resource('home', HomeController::class)->names('home');
 Route::middleware(['auth', 'verified', 'user.role:buyer'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

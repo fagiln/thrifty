@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
-class LandingBuyerController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-     return view('landing');
+       $slider= Slider::all();
+       $product = Product::all();
+        return view('buyer.home', compact('slider', 'product'));
     }
 
     /**
