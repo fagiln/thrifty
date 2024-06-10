@@ -15,6 +15,8 @@ class Seller extends Model
         'first_name',
         'last_name',
         'email',
+        'alamat',
+        'no_hp',
         'avatar',
         'password',
         'role',

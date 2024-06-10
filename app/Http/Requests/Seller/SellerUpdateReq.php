@@ -26,6 +26,8 @@ class SellerUpdateReq extends FormRequest
             'email' => 'required|string|email|max:50',
             'first_name' => 'required|string|max:10',
             'file' => 'nullable|mimes:png,jpg,jpeg',
+            'alamat' => 'nullable|string',
+            'no_hp' => 'nullable|regex:/^[0-9]+$/|digits_between:10,13',
             'last_name' => 'nullable|string|max:10',
             'password' => 'required|string|min:8|confirmed',
 

@@ -9,7 +9,7 @@
         <div class="row ">
             <div class="col-md-6">
                 <div class="mb-1 mt-3 label">Title</div>
-                <input type="text" class=" form-control" name="title" required value="{{ old('title') }}"
+                <input type="text" class=" form-control" name="title" value="{{ old('title') }}"
                     placeholder="Masukkan Nama Awal">
                 @error('title')
                     <div class="text-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
         <div class="row ">
             <div class="col-md-6">
                 <div class="mb-1 mt-3 label">Deskripsi</div>
-                <textarea type="text" class=" form-control" name="description" required placeholder="Masukkan Deskripsi"></textarea>
+                <textarea type="text" class=" form-control" name="description" placeholder="Masukkan Deskripsi"></textarea>
                 @error('description')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror

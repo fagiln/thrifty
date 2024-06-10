@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Buyer\DashboardBuyerController;
 use App\Http\Controllers\Buyer\HomeController;
+use App\Http\Controllers\Buyer\ProfileController;
 use App\Http\Controllers\Seller\AddSellerController;
 use App\Http\Controllers\Seller\DashboardSellerController;
 use App\Http\Controllers\Seller\UserListController;
@@ -60,5 +61,6 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
 });
 Route::resource('home', HomeController::class)->names('home');
 Route::middleware(['auth', 'verified', 'user.role:buyer'])->group(function () {
+    Route::resource('profile', ProfileController::class)->names('profile');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

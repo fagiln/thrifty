@@ -17,11 +17,13 @@ return new class extends Migration
             $table->string('email', 50)->unique();
             $table->string('password', 255);
             $table->string('first_name', 10);
+            $table->text('alamat')->nullable();
+            $table->string('no_hp')->nullable();
             $table->text('avatar')->nullable();
             $table->string('last_name', 10)->nullable();
             $table->enum('role', ['seller', 'buyer'])->default('buyer');
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();  
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

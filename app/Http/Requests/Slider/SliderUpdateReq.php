@@ -22,9 +22,9 @@ class SliderUpdateReq extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
+            'title' => 'nullable|string',
             'file' => 'mimes:jpg,jpeg,png',
-            'description' => 'required|string'
+            'description' => 'nullable|string'
         ];
     }
 }

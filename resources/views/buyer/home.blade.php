@@ -1,6 +1,22 @@
 @extends('template.app')
 @section('title', 'Home')
 @section('content')
+@push('style')
+<style>
+    .responsive-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+    
+    /* Media query for mobile devices */
+    @media (max-width: 767px) {
+        .responsive-img {
+            height: 200px; /* Adjust height for mobile view */
+        }
+    }
+</style>
+@endpush
     <div class="slider">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -13,7 +29,7 @@
             <div class="carousel-inner">
                 @foreach ($slider as $index => $item)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <img src="{{ asset('uploads/' . $item->image_path) }}" class="d-block w-100"
+                        <img src="{{ asset('uploads/' . $item->image_path) }}" class="responsive-img d-block w-100" 
                             alt="{{ $item->title }}">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{ $item->title }}</h5>
@@ -37,35 +53,35 @@
     </div>
     <div class="product container-xxl">
         <div class="label my-4">
-            <h2>Our Product</h2>
+            <p class="fs-4 fw-bold">Our Product</p>
         </div>
 
 
         <div class="row">
 
             @foreach ($product as $item)
-                <div class="col-md-3">
-                    <div class="card  " style="width: 18rem; ">
-                        <img src="{{ asset('uploads/' . $item->img_path) }}"
-                            class="card-img-top"style="height:200px; width:100%; object-fit:cover;" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->name }}</h5>
-                            <p class="card-text">{{ $item->description }}</p>
-                            <p class="card-text">Rp. {{ $item->price }}</p>
-                            <div class="d-flex justify-content-between">
-                                @auth
-
-                                    <a href="#" class="btn btn-custom">Buy</a>
-                                    <a href="">See details</a>
-                                @endauth
-                                @guest
-                                    <a href="/login" class="btn btn-custom">Buy</a>
-                                    <a href="">See details</a>
-                                @endguest
-                            </div>
+            @if ($item->stock != '0')
+            <div class="col-md-3">
+                <div class="card  " style="width: 18rem; ">
+                    <img src="{{ asset('uploads/' . $item->img_path) }}"
+                        class="card-img-top"style="height:200px; width:100%; object-fit:cover;" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->name }}</h5>
+                        <p class="card-text">{{ $item->description }}</p>
+                        <p class="card-text">Rp. {{ $item->price }}</p>
+                        <div class="d-flex justify-content-between align-items-cemter">
+                            @auth
+                                <a href="#" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                            @endauth
+                            @guest
+                                <a href="/login" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Add to cart</a>
+                            @endguest
+                            <a class="text-muted" href="">See details</a>
                         </div>
                     </div>
                 </div>
+            </div>
+            @endif
             @endforeach
         </div>
 

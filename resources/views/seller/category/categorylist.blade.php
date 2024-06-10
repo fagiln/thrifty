@@ -13,7 +13,10 @@
     <a href="{{ route('seller.category.showadd') }}" class="btn btn-primary my-2">
         <i class="fas fa-plus fs-2"></i> Add
     </a>
-    {{ $dataTable->table() }}
+    <div class="table-responsive">
+
+        {{ $dataTable->table() }}
+    </div>
     @push('scripts')
         {{ $dataTable->scripts() }}
         <script>

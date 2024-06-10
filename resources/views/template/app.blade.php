@@ -30,14 +30,14 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatables/datatables.bundle.css') }}">
-
+    @stack('style')
 </head>
 
-<body>
+<body class="">
     <nav class="navbar p-3">
         <div class="container-fluid d-flex">
             <div>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/home">
                     <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="30" height="24"
                         class="d-inline-block align-text-top">
                     THRIFTY
@@ -50,8 +50,17 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Welcome, {{ Auth::user()->username }}
+                            <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt=""
+                                class="ml-2 rounded-circle"
+                                style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
+
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ url('profile/' . Auth::user()->id . '/edit') }}"><i
+                                        class="fas fa-user-alt"></i> Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="/logout"
                                     onclick="return confirm('Apa anda yakin ingin logout?')"> <i
                                         class="fas fa-sign-out-alt"></i>
@@ -74,7 +83,58 @@
     </nav>
     <div class="container-xxl">
         @yield('content')
+
     </div>
+    <footer class="bg-dark text-white text-center text-lg-start mt-4">
+        {{-- <div class="container-xxl p-4">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">THRIFTY</h5>
+                    <p>
+                      Made by love
+                    </p>
+                </div>
+
+                <!-- Useful Links -->
+                <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Social Media</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Contact</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="mailto:info@example.com" class="text-white">info@example.com</a>
+                        </li>
+                        <li>
+                            <a href="tel:+1234567890" class="text-white">+1 234 567 890</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> --}}
+
+        <div class="text-center p-3 bg-dark">
+            {{-- <a class="text-white" href="https://example.com/">example.com</a> --}}
+            <br>© 2024 Thrifty
+        </div>
+    </footer>
 
     @stack('scripts')
     <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>

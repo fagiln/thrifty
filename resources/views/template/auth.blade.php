@@ -12,7 +12,7 @@
 <body>
 
     <div class="d-flex justify-content-center align-items-center min-vh-100">
-        <div class="py-3 px-5  card card-primary  " style="width: 500px">
+        <div class="py-4 px-5  card card-primary  " style="width: 500px">
 
             @if (session('register'))
                 <div class="mt-3">

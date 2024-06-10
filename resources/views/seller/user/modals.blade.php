@@ -58,6 +58,23 @@
     </div>
     <div class="row ">
         <div class="col-md-6">
+            <div class="mb-1 mt-3 label">Address</div>
+            <textarea type="text" class=" form-control" name="alamat" placeholder="Masukkan Alamat">{{$user->alamat}}</textarea>
+            @error('alamat')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-md-6">
+            <div class="mb-1 mt-3 label">Number</div>
+            <input type="text" class=" form-control" name="no_hp" placeholder="Masukkan No Hp" value="{{$user->no_hp}}">
+            @error('no_hp')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-6">
             <div class="mb-1 mt-3 label">Password</div>
             <input type="password" class=" form-control" name="password" required placeholder="Masukkan Password">
             @error('password')

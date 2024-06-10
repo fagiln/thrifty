@@ -82,7 +82,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('seller/user-list/'.Auth::user()->id.'/edit') }}">
                         Welcome, Seller {{ Auth::user()->username }} !
-                        <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt="Avatar" class="ml-2 rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
+                        <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt="" class="ml-2 rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
                     </a>
                 </li>
 

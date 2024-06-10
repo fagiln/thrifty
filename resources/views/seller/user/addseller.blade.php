@@ -18,7 +18,7 @@
         <input type="file" id="fileInput" class=" form-control" name="file"  >
         <div class="d-flex mt-2">
             <div class="label mr-3">Preview :</div>
-            <img id="previewImage" src="#" alt="Preview Gambar" style="display: none; margin-top: 10px; max-width: 200px;">
+            <img class="rounded-circle" id="previewImage" src="#" alt="Preview Gambar" style="display: none; height:80px; width:80px; object-fit:cover;">
         </div>
         @error('file')
             <div class="text-danger">{{ $message }}</div>
@@ -58,6 +58,23 @@
                 <input type="text" class=" form-control" name="last_name" value="{{ old('last_name') }}"
                     placeholder="Masukkan Nama Akhir (optional)">
                 @error('last_name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-6">
+                <div class="mb-1 mt-3 label">Address</div>
+                <textarea type="text" class=" form-control" name="alamat" placeholder="Masukkan Alamat">{{old('alamat')}}</textarea>
+                @error('alamat')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-md-6">
+                <div class="mb-1 mt-3 label">Number</div>
+                <input type="text" class=" form-control" name="no_hp" placeholder="Masukkan No Hp" value="{{old('number')}}">
+                @error('no_hp')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
 

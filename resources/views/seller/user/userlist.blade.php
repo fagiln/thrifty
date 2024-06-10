@@ -2,7 +2,7 @@
 @section('title', 'User List')
 
 @section('content')
-    <div class="">
+  
 
         @if (session('status'))
             <div class="mt-3">
@@ -12,7 +12,7 @@
                 </div>
             </div>
         @endif
-
+        <div class="table-responsive">
         {{ $dataTable->table() }}
     </div>
     {{-- @include('seller.user.modals') --}}

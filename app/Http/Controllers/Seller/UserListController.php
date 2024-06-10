@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Seller\SellerUpdateReq;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserListController extends Controller
 {
@@ -25,6 +26,7 @@ class UserListController extends Controller
     {
         $user= User::find($id);
         $data = $request->validated();
+        $data['password'] = Hash::make($data['password']); 
         if ($request->hasFile('file')) {
             // Delete old image if it exists
             if ($user->avatar && file_exists(public_path('uploads/' . $user->avatar))) {

@@ -1,7 +1,7 @@
 @extends('template.auth')
 @section('title', 'Register')
 @section('content')
-    <p class="fs-1 fw-bold">Register here ..</p>
+    <p class="fs-3 text-center fw-bold">Register</p>
     <form action="{{ route('register.store') }}" method="POST" class="form">
         @csrf
         <div class="mb-1 label">Username</div>

@@ -80,6 +80,8 @@ class UserDataTable extends DataTable
             Column::make('first_name')->title('First Name'),
             Column::make('last_name')->title('Last Name'),
             Column::make('role'),
+            Column::make('no_hp'),
+            Column::make('alamat'),
             Column::make('avatar'),
             Column::make('created_at')->title('Dibuat Pada'),
             Column::make('updated_at')->title('Diupdate Pada'),
