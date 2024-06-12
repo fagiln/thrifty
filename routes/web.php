@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Buyer\DashboardBuyerController;
+use App\Http\Controllers\Buyer\DetailController;
 use App\Http\Controllers\Buyer\HomeController;
 use App\Http\Controllers\Buyer\ProfileController;
 use App\Http\Controllers\Seller\AddSellerController;
@@ -60,6 +61,8 @@ Route::middleware(['auth', 'verified', 'user.role:seller'])->group(function () {
     });
 });
 Route::resource('home', HomeController::class)->names('home');
+// Route::get('home', [HomeController::class, 'search'])->name('home.search');
+Route::get('/detail-product/{id}', [DetailController::class, 'detail'])->name('detail.product');
 Route::middleware(['auth', 'verified', 'user.role:buyer'])->group(function () {
     Route::resource('profile', ProfileController::class)->names('profile');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

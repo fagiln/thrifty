@@ -54,7 +54,7 @@
                             <p class="card-text">Deskripsi</p>
                             <p class="card-text">Rp. 9999999</p>
                             <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-primary">Buy</a>
+                                <a href="#" class="btn btn-primary">Add to Cart</a>
                                 <a href="">See details</a>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
         <div class="row ">
             <div class="col-md-6">
                 <div class="mb-1 mt-3 label">Deskripsi</div>
-                <textarea type="text" class=" form-control" name="description" required placeholder="Masukkan Deskripsi"></textarea>
+                <textarea type="text" class=" form-control" name="description" required placeholder="Masukkan Deskripsi">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror

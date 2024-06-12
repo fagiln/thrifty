@@ -12,6 +12,8 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Str;
+
 
 class ProductDataTable extends DataTable
 {
@@ -34,7 +36,10 @@ class ProductDataTable extends DataTable
 
                 return $product->category->name;
             })
-            ->rawColumns(['action', 'img_path'])
+            ->editColumn('description', function (Product $product) {
+                return '<span>'. Str::limit($product->description, 10, ' ...').'</span>';
+            })
+            ->rawColumns(['action', 'img_path', 'description'])
             ->setRowId('id');
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -12,11 +13,33 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     $slider = Slider::all();
+    //     $product = Product::all();
+    //     return view('buyer.home', compact('slider', 'product'));
+    // }
+    public function index(Request $request)
     {
-       $slider= Slider::all();
-       $product = Product::all();
-        return view('buyer.home', compact('slider', 'product'));
+        $slider = Slider::all();
+        $categories = Category::all();
+
+        $query = Product::query();
+
+        if ($request->has('search')) {
+            $search = $request->get('search');
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('description', 'LIKE', "%$search%");
+        }
+        if ($request->has('category')) {
+            $category = $request->get('category');
+            if ($category) {
+                $query->where('category_id', $category);
+            }
+        }
+        $product = $query->where('stock', '>', 0)->get();
+
+        return view('buyer.home', compact('product', 'slider', 'categories'));
     }
 
     /**
