@@ -39,7 +39,7 @@ class HomeController extends Controller
         }
         $product = $query->where('stock', '>', 0)->get();
 
-        return view('buyer.home', compact('product', 'slider', 'categories'));
+        return view('buyer.index', compact('product', 'slider', 'categories'));
     }
 
     /**
