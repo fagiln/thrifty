@@ -29,6 +29,12 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatables/datatables.bundle.css') }}">
+    <style>
+        .active {
+            background-color: #006769 !important;
+            color: white !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -51,7 +57,6 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <span class="nav-link">@yield('title')</span>
                 </li>
-
             </ul>
 
             <!-- Right navbar links -->
@@ -80,9 +85,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('seller/user-list/'.Auth::user()->id.'/edit') }}">
+                    <a class="nav-link" href="{{ url('seller/user-list/' . Auth::user()->id . '/edit') }}">
                         Welcome, Seller {{ Auth::user()->username }} !
-                        <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt="" class="ml-2 rounded-circle" style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
+                        <img src="{{ asset('uploads/' . Auth::user()->avatar) }}" alt=""
+                            class="ml-2 rounded-circle"
+                            style="width: 30px; height: 30px; object-fit: cover; margin-right: 10px;">
                     </a>
                 </li>
 
@@ -100,20 +107,20 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar" id="sidebar">
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item  rounded">
+                        <li class="nav-item rounded">
                             <a href="/seller/dashboard" class="nav-link">
                                 <i class="fas fa-home nav-icon"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item menu-close">
-                            <a href="#" class="nav-link ">
+                        <li class="nav-item menu-close menu">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tshirt"></i>
                                 <p>
                                     Product
@@ -122,20 +129,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('seller.product.list.index') }}" class="nav-link ">
+                                    <a href="{{ route('seller.product.list.index') }}" class="nav-link">
                                         <i class="fas fa-cart-plus nav-icon"></i>
                                         <p>Product List</p>
                                     </a>
-                                    <a href="{{ url('seller/category-list') }}" class="nav-link ">
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('seller/category-list') }}" class="nav-link">
                                         <i class="fas fa-tags nav-icon"></i>
                                         <p>Category List</p>
                                     </a>
                                 </li>
                             </ul>
-
                         </li>
-                        <li class="nav-item menu-close">
-                            <a href="#" class="nav-link ">
+                        <li class="nav-item menu-close menu">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-alt"></i>
                                 <p>
                                     User
@@ -144,33 +152,32 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('seller.add.seller.index') }}" class="nav-link ">
+                                    <a href="{{ route('seller.add.seller.index') }}" class="nav-link">
                                         <i class="nav-icon fas fa-user-plus"></i>
                                         <p>Add Seller</p>
                                     </a>
-                                    <a href="{{ url('seller/user-list') }}" class="nav-link ">
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('seller/user-list') }}" class="nav-link">
                                         <i class="nav-icon fas fa-users"></i>
                                         <p>User List</p>
                                     </a>
                                 </li>
                             </ul>
-
                         </li>
-                        <li class="nav-item  rounded">
-                            <a href="{{route('seller.slider.list.index')}}" class="nav-link">
+                        <li class="nav-item rounded">
+                            <a href="{{ route('seller.slider.list.index') }}" class="nav-link">
                                 <i class="fas fa-sliders-h nav-icon"></i>
                                 <p>Slider</p>
                             </a>
                         </li>
                         <li class="nav-item rounded">
-                            <a href="/seller/logout" class="nav-link  bg-danger"
+                            <a href="/seller/logout" class="nav-link bg-danger"
                                 onclick="return confirm('Anda yakin ingin Logout?')">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>Logout</p>
                             </a>
                         </li>
-
-
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -196,7 +203,6 @@
 
             <!-- Main content -->
             <div class="p-3">
-
                 @yield('content')
             </div>
             <!-- /.content -->
@@ -208,7 +214,6 @@
                 <b>Beta Version</b> 1.0.0
             </div>
         </footer>
-
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
@@ -242,10 +247,28 @@
     <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
 
     <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
     <script src="{{ asset('datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('datatables/bootstrap.datatables.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
+            // const menuLinks = document.querySelectorAll('.menu');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    sidebarLinks.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                });
+                if (link.href === window.location.href) {
+                    link.classList.add('active');
+                    const parentMenu = link.closest('.menu');
+                    if (parentMenu) {
+                        parentMenu.classList.remove('menu-close');
+                        parentMenu.classList.add('menu-open');
+                    }
+                }
+            });
+        });
+    </script>
     @stack('scripts')
 
 </body>
