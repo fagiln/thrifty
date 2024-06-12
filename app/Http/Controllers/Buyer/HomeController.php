@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -45,10 +46,42 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function buy(string $id)
     {
-        //
+        // Mulai transaksi database
+        DB::beginTransaction();
+    
+        try {
+            // Temukan produk berdasarkan ID
+            $product = Product::findOrFail($id);
+    
+            // Periksa apakah stok mencukupi
+            if ($product->stock < 1) {
+                // Jika stok tidak mencukupi, lempar pengecualian
+                throw new \Exception('Stok produk tidak mencukupi.');
+            }
+    
+            // Kurangi stok produk
+            $product->stock -= 1;
+    
+            // Simpan perubahan ke database
+            $product->save();
+    
+            // Commit transaksi database
+            DB::commit();
+    
+            // Redirect ke halaman home dengan pesan sukses
+            return redirect('/home')->with('success', 'Produk berhasil dibeli.');
+    
+        } catch (\Exception $e) {
+            // Rollback transaksi database jika terjadi kesalahan
+            DB::rollBack();
+    
+            // Redirect ke halaman home dengan pesan error
+            return redirect('/home')->with('error', $e->getMessage());
+        }
     }
+    
 
     /**
      * Store a newly created resource in storage.

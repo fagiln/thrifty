@@ -28,10 +28,10 @@
                         <div class="p-2 bd-highlight fw-bold">Rp. {{ $product->price }}</div>
                         <div class="p-2 bd-highlight">
                             @auth
-                                <a href="" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Add to Cart</a>
+                                <a href="{{route('product.buy', $item->id)}}" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Buy</a>
                             @endauth
                             @guest
-                                <a href="/login" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Add to Cart</a>
+                                <a href="/login" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Buy</a>
                             @endguest
                         </div>
                     </div>

@@ -66,4 +66,5 @@ Route::get('/detail-product/{id}', [DetailController::class, 'detail'])->name('d
 Route::middleware(['auth', 'verified', 'user.role:buyer'])->group(function () {
     Route::resource('profile', ProfileController::class)->names('profile');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/buy/{id}', [HomeController::class, 'buy'])->name('product.buy');
 });

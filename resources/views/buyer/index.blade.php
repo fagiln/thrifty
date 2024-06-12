@@ -87,12 +87,10 @@
                                 <p class="card-text fw-bolder">Rp. {{ $item->price }}</p>
                                 <div class="d-flex justify-content-between align-items-cemter">
                                     @auth
-                                        <a href="#" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Add to
-                                            cart</a>
+                                        <a href="{{route('product.buy', $item->id)}}" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Buy</a>
                                     @endauth
                                     @guest
-                                        <a href="/login" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Add to
-                                            cart</a>
+                                        <a href="/login" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Buy</a>
                                     @endguest
                                     <a class="text-muted" href="{{ url('detail-product/' . $item->id) }}">See details</a>
                                 </div>
