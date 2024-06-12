@@ -63,14 +63,7 @@
                 @csrf
                 <input class="form-control me-2" name="search" type="search" placeholder="Cari barang"
                     aria-label="Search">
-                <select class="form-select me-2" name="category">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
+               
                 <button class="btn btn-outline-primary" type="submit">Search</button>
 
             </form>
@@ -84,7 +77,7 @@
             @foreach ($product as $item)
                 @if ($item->stock != '0')
                     <div class="col-md-3">
-                        <div class="card  " style="width: 18rem; ">
+                        <div class="card mb-3" style="width: 18rem; ">
                             <img src="{{ asset('uploads/' . $item->img_path) }}"
                                 class="card-img-top"style="height:200px; width:100%; object-fit:cover;" alt="...">
                             <div class="card-body">

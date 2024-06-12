@@ -4,7 +4,7 @@
     @push('style')
         <style>
             .image {
-                height: 250px;
+                height: auto;
                 width: 500px;
                 object-fit: cover;
             }
