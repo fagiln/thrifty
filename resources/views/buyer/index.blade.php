@@ -11,6 +11,7 @@
 
             /* Media query for mobile devices */
             @media (max-width: 767px) {
+
                 .responsive-img {
                     height: 200px;
                     /* Adjust height for mobile view */
@@ -63,7 +64,7 @@
                 @csrf
                 <input class="form-control me-2" name="search" type="search" placeholder="Cari barang"
                     aria-label="Search">
-               
+
                 <button class="btn btn-outline-primary" type="submit">Search</button>
 
             </form>
@@ -72,11 +73,11 @@
         </div>
 
 
-        <div class="row">
+        <div class="row ">
 
             @foreach ($product as $item)
                 @if ($item->stock != '0')
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-md-6 d-flex justify-content-center">
                         <div class="card mb-3" style="width: 18rem; ">
                             <img src="{{ asset('uploads/' . $item->img_path) }}"
                                 class="card-img-top"style="height:200px; width:100%; object-fit:cover;" alt="...">
@@ -87,7 +88,8 @@
                                 <p class="card-text fw-bolder">Rp. {{ $item->price }}</p>
                                 <div class="d-flex justify-content-between align-items-cemter">
                                     @auth
-                                        <a href="{{route('product.buy', $item->id)}}" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Buy</a>
+                                        <a href="{{ route('product.buy', $item->id) }}" class="btn btn-custom"><i
+                                                class="fas fa-cart-plus"></i> Buy</a>
                                     @endauth
                                     @guest
                                         <a href="/login" class="btn btn-custom"><i class="fas fa-cart-plus"></i> Buy</a>
