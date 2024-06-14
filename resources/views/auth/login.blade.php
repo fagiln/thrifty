@@ -1,8 +1,11 @@
 @extends('template.auth')
 @section('title', 'Login')
 @section('content')
+<p class="fs-3 text-center fw-bolder">Welcome back to</p>
 
-    <p class="fs-3 text-center fw-bold">Welcome back</p>
+<div class="w-100 d-flex justify-content-center">
+    <img src="{{asset('assets/img/logo.png')}}" alt="" class="" style="width: 200px; height: 200px;">
+</div>
     <form action="{{ route('login.authenticate') }}" method="POST" class="form">
         @csrf
         <div class="mb-1 label">Email</div>

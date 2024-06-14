@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatables/datatables.bundle.css') }}">
     <style>
+        body{
+            margin: 0;
+        }
         .active {
             background-color: #006769 !important;
             color: white !important;

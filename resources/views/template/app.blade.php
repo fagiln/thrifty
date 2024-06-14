@@ -37,9 +37,9 @@
 <body class="">
     <nav class="navbar p-3">
         <div class="container-fluid d-flex">
-            <div>
-                <a class="navbar-brand" href="/home">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="30" height="24"
+            <div class="">
+                <a class="navbar-brand d-flex align-items-center fw-bold" href="/home">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" width="50" height="40"
                         class="d-inline-block align-text-top">
                     THRIFTY
                 </a>

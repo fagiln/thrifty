@@ -38,7 +38,7 @@
             </div>
          
             <div class="col-md-6">
-                <button type="submit" class="mt-5 btn btn-primary">Add Product</button>
+                <button type="submit" class="mt-5 btn btn-primary">Add Slider</button>
                 <a href="{{ route('seller.slider.list.index') }}" type="button" class="mt-5 btn btn-secondary">Cancel</a>
             </div>
         </div>
