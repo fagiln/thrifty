@@ -132,8 +132,13 @@
         </div> --}}
 
         <div class="text-center p-3 bg-dark">
-            {{-- <a class="text-white" href="https://example.com/">example.com</a> --}}
-            <br>© 2024 Thrifty
+            <p>My Social Media</p>
+            <a class="text-white m-2" target="_blank" href="https://github.com/fagiln"><i class="fab fa-github"></i></a>
+            <a class="text-white m-2" target="_blank" href="https://instagram.com/nurilfagil"><i class="fab fa-instagram"></i></a>
+            <a class="text-white m-2" target="_blank" href="https://wa.me/6287855913391"><i class="fab fa-whatsapp"></i></a>
+            <a class="text-white m-2" target="_blank" href="https://youtube.com/@dream_caller"><i class="fab fa-youtube"></i></a>
+            <a class="text-white m-2" target="_blank" href="https://id.linkedin.com/in/fagil-nuril-akbar"><i class="fab fa-linkedin"></i></a>
+            <p class="mt-3">© 2024 Thrifty</p>
         </div>
     </footer>
 
