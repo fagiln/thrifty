@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin | @yield('title')</title>
-    <link rel="shortcut icon"  href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,9 +30,10 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('datatables/datatables.bundle.css') }}">
     <style>
-        body{
+        body {
             margin: 0;
         }
+
         .active {
             background-color: #006769 !important;
             color: white !important;
@@ -65,7 +66,7 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
-                
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('seller/user-list/' . Auth::user()->id . '/edit') }}">
                         Welcome, Seller {{ Auth::user()->username }} !
@@ -140,7 +141,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('seller/user-list') }}" class="nav-link">
+                                    <a href="{{ route('seller.user.list.index') }}" class="nav-link">
                                         <i class="nav-icon fas fa-users"></i>
                                         <p>User List</p>
                                     </a>
