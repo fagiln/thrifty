@@ -69,7 +69,16 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="/logout"
+                            @if (Auth::user()->role == 'seller')
+                                
+                            <li>
+                                <a class="dropdown-item" href="{{route('seller.logout')}}"
+                                    onclick="return confirm('Apa anda yakin ingin logout?')"> <i
+                                        class="fas fa-sign-out-alt"></i>
+                                    Logout</a></li>
+                            @endif
+                            <li>
+                                <a class="dropdown-item" href="/logout"
                                     onclick="return confirm('Apa anda yakin ingin logout?')"> <i
                                         class="fas fa-sign-out-alt"></i>
                                     Logout</a></li>
