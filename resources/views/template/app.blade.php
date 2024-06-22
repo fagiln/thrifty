@@ -64,11 +64,11 @@
                                 @else
                                 <li><a class="dropdown-item" href="{{ url('profile/' . Auth::user()->id . '/edit') }}"><i
                                             class="fas fa-user-alt"></i> Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                               
                             @endif
-
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             @if (Auth::user()->role == 'seller')
                                 <li>
                                     <a class="dropdown-item" href="{{ route('seller.logout') }}"
