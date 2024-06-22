@@ -28,9 +28,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    if (auth()->check() && auth()->user()->role == 'seller') {
-        return redirect('seller/dashboard');
-    }
     return redirect(route('home.index'));
 });
 

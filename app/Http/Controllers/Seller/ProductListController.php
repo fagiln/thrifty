@@ -20,17 +20,7 @@ class ProductListController extends Controller
         return $dataTable->render('seller.product.productlist');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(ProductStoreReq $request)
     {
         //    dd($request->all());
@@ -68,10 +58,6 @@ class ProductListController extends Controller
         return view('seller.product.editproduct', compact('product','category'));
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(ProductUpdateReq $request, string $id)
     {
         $product =  Product::find($id);
@@ -94,10 +80,6 @@ class ProductListController extends Controller
 
         return redirect('seller/product-list')->with(['status'=> 'Berhasil update product']);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $product = Product::find($id);
