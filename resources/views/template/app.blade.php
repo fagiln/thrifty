@@ -58,11 +58,9 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @if (Auth::user()->role == 'seller')
-                 
-                                <li><a class="dropdown-item" href="{{route('seller.dashboard.index')}}"><i
+                                <li><a class="dropdown-item" href="{{ route('seller.dashboard.index') }}"><i
                                             class="fas fa-user-alt"></i> Dashboard</a></li>
                                 <li>
-                                    
                             @endif
                             <li><a class="dropdown-item" href="{{ url('profile/' . Auth::user()->id . '/edit') }}"><i
                                         class="fas fa-user-alt"></i> Profile</a></li>
@@ -70,18 +68,22 @@
                                 <hr class="dropdown-divider">
                             </li>
                             @if (Auth::user()->role == 'seller')
-                                
-                            <li>
-                                <a class="dropdown-item" href="{{route('seller.logout')}}"
-                                    onclick="return confirm('Apa anda yakin ingin logout?')"> <i
-                                        class="fas fa-sign-out-alt"></i>
-                                    Logout</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('seller.logout') }}"
+                                        onclick="return confirm('Apa anda yakin ingin logout?')"> <i
+                                            class="fas fa-sign-out-alt"></i>
+                                        Logout</a>
+                                </li>
                             @endif
-                            <li>
-                                <a class="dropdown-item" href="/logout"
-                                    onclick="return confirm('Apa anda yakin ingin logout?')"> <i
-                                        class="fas fa-sign-out-alt"></i>
-                                    Logout</a></li>
+                            @if (Auth::user()->role == 'buyer')
+                                <li>
+                                    <a class="dropdown-item" href="/logout"
+                                        onclick="return confirm('Apa anda yakin ingin logout?')"> <i
+                                            class="fas fa-sign-out-alt"></i>
+                                        Logout</a>
+                                </li>
+                            @endif
+
                         </ul>
                     </div>
 
