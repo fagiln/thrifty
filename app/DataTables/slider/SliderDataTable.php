@@ -3,6 +3,7 @@
 namespace App\DataTables\slider;
 
 use App\Models\Slider;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -28,6 +29,13 @@ class SliderDataTable extends DataTable
             ->editColumn('image_path', function(Slider $slider ){
                 return '<img src="'.asset('uploads/'.$slider->image_path).'" width="150px">';
             })
+             ->editColumn('created_at', function(Slider $slider ){
+                return Carbon::parse($slider->created_at)->format('d-m-Y');
+            }) 
+            ->editColumn('updated_at', function(Slider $slider ){
+                return Carbon::parse($slider->updated_at)->format('d-m-Y');
+            })
+            
             ->rawColumns(['action', 'image_path'])
             ->setRowId('id');
     }

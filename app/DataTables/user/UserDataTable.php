@@ -3,6 +3,7 @@
 namespace App\DataTables\user;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -30,6 +31,12 @@ class UserDataTable extends DataTable
             })
             ->editColumn('avatar', function(User $user){
                 return '<img src="'.asset('uploads/'.$user->avatar).'" width="100px">';
+            }) 
+            ->editColumn('created_at', function(User $user){
+                return Carbon::parse($user->created_at)->format('d-m-Y');
+            }) 
+            ->editColumn('updated_at', function(User $user){
+                return Carbon::parse($user->updated_at)->format('d-m-Y');
             })
             ->rawColumns(['action','avatar'])
             ->setRowId('id');
@@ -83,8 +90,8 @@ class UserDataTable extends DataTable
             Column::make('no_hp'),
             Column::make('alamat'),
             Column::make('avatar'),
-            Column::make('created_at')->title('Dibuat Pada'),
-            Column::make('updated_at')->title('Diupdate Pada'),
+            Column::make('created_at'),
+            Column::make('updated_at')
         ];
     }
 

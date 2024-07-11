@@ -13,6 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 
 class ProductDataTable extends DataTable
@@ -37,7 +38,13 @@ class ProductDataTable extends DataTable
                 return $product->category->name;
             })
             ->editColumn('description', function (Product $product) {
-                return '<span>'. Str::limit($product->description, 10, ' ...').'</span>';
+                return '<span>' . Str::limit($product->description, 10, ' ...') . '</span>';
+            })
+            ->editColumn('created_at', function (Product $product) {
+                return Carbon::parse($product->created_at)->format('d-m-Y');
+            })
+             ->editColumn('updated_at', function (Product $product) {
+                return Carbon::parse($product->updated_at)->format('d-m-Y');
             })
             ->rawColumns(['action', 'img_path', 'description'])
             ->setRowId('id');

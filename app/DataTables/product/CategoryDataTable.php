@@ -11,6 +11,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Carbon\Carbon;
 
 class CategoryDataTable extends DataTable
 {
@@ -22,9 +23,15 @@ class CategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function (Category $category) {
-            return view('seller.category.action', ['category' => $category]);
-        })
+            ->addColumn('action', function (Category $category) {
+                return view('seller.category.action', ['category' => $category]);
+            })
+            ->editColumn('created_at', function (Category $category) {
+                return Carbon::parse($category->created_at)->format('d-m-Y');
+            })
+            ->editColumn('updated_at', function (Category $category) {
+                return Carbon::parse($category->updated_at)->format('d-m-Y');
+            })
             ->setRowId('id');
     }
 
@@ -63,10 +70,10 @@ class CategoryDataTable extends DataTable
     {
         return [
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
             Column::make('name'),
             Column::make('created_at'),
             Column::make('updated_at'),
