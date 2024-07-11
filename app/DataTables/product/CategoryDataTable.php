@@ -27,10 +27,10 @@ class CategoryDataTable extends DataTable
                 return view('seller.category.action', ['category' => $category]);
             })
             ->editColumn('created_at', function (Category $category) {
-                return Carbon::parse($category->created_at)->format('d-F-Y');
+                return Carbon::parse($category->created_at)->format('d F Y H:i');
             })
             ->editColumn('updated_at', function (Category $category) {
-                return Carbon::parse($category->updated_at)->format('d-F-Y');
+                return Carbon::parse($category->updated_at)->format('d F Y H:i');
             })
             ->setRowId('id');
     }
