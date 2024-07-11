@@ -30,10 +30,10 @@ class SliderDataTable extends DataTable
                 return '<img src="'.asset('uploads/'.$slider->image_path).'" width="150px">';
             })
              ->editColumn('created_at', function(Slider $slider ){
-                return Carbon::parse($slider->created_at)->format('d-m-Y');
+                return Carbon::parse($slider->created_at)->format('d-F-Y');
             }) 
             ->editColumn('updated_at', function(Slider $slider ){
-                return Carbon::parse($slider->updated_at)->format('d-m-Y');
+                return Carbon::parse($slider->updated_at)->format('d-F-Y');
             })
             
             ->rawColumns(['action', 'image_path'])

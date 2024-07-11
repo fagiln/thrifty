@@ -33,10 +33,10 @@ class UserDataTable extends DataTable
                 return '<img src="'.asset('uploads/'.$user->avatar).'" width="100px">';
             }) 
             ->editColumn('created_at', function(User $user){
-                return Carbon::parse($user->created_at)->format('d-m-Y');
+                return Carbon::parse($user->created_at)->format('d-F-Y');
             }) 
             ->editColumn('updated_at', function(User $user){
-                return Carbon::parse($user->updated_at)->format('d-m-Y');
+                return Carbon::parse($user->updated_at)->format('d-F-Y');
             })
             ->rawColumns(['action','avatar'])
             ->setRowId('id');

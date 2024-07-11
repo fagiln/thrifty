@@ -41,10 +41,10 @@ class ProductDataTable extends DataTable
                 return '<span>' . Str::limit($product->description, 10, ' ...') . '</span>';
             })
             ->editColumn('created_at', function (Product $product) {
-                return Carbon::parse($product->created_at)->format('d-m-Y');
+                return Carbon::parse($product->created_at)->format('d-F-Y');
             })
              ->editColumn('updated_at', function (Product $product) {
-                return Carbon::parse($product->updated_at)->format('d-m-Y');
+                return Carbon::parse($product->updated_at)->format('d-F-Y');
             })
             ->rawColumns(['action', 'img_path', 'description'])
             ->setRowId('id');
